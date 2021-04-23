@@ -1,41 +1,15 @@
 import { useContext } from 'react';
 import { MovieContext } from '../contexts/MovieProvider';
 const Whatever = () => {
-  const [{ like, comment }, dispatch] = useContext(MovieContext);
+  const [history, setHistory] = useContext(MovieContext);
   return (
-    <>
-      <hr />
-      <div>like: {like}</div>
-      <div>comment: {comment}</div>
-      <button
-        onClick={() => {
-          dispatch({ type: 'increment_comment' });
-        }}
-      >
-        increment comment
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: 'decrement_comment' });
-        }}
-      >
-        decrement comment
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: 'increment_like', payload: 'whatever payload' });
-        }}
-      >
-        increment like
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: 'decrement_like' });
-        }}
-      >
-        decrement like
-      </button>
-    </>
+    <div
+      onClick={() => {
+        setHistory({ ...history, position: 1 });
+      }}
+    >
+      {history.position} whatever
+    </div>
   );
 };
 

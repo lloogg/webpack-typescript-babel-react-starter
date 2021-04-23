@@ -1,14 +1,15 @@
 import { useContext, useRef } from 'react';
 import { MovieContext } from '../contexts/MovieProvider';
 const MovieList = () => {
-  const [{ like, comment }, dispatch] = useContext(MovieContext);
-  const ref = useRef(0);
+  const [history, setHistory] = useContext(MovieContext);
   return (
-    <>
-      <div>like: {like}</div>
-      <div>comment: {comment}</div>
-      <div>renders: {ref.current++}</div>
-    </>
+    <div
+      onClick={() => {
+        setHistory({ ...history, position: history.position + 1 });
+      }}
+    >
+      {history.position}
+    </div>
   );
 };
 
